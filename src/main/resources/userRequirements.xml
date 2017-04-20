@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="userRequirements" extends="struts-default">
+		
+		<action name="setGeneralReq" class="com.geni.actions.GeneralRequirement"
+			method="setGeneralReq">
+			<result name="input">/general.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getNetworkReq</param>
+        	</result>
+		</action> 
+		<action name="setNetworkReq" class="com.geni.actions.NetworkRequirement"
+			method="setNetworkReq">
+			<result name="input">/network.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getStorageReq</param>
+        	</result>
+		</action>
+		<action name="setStorageReq" class="com.geni.actions.StorageRequirement"
+			method="setStorageReq">
+			<result name="input">/storage.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getComputationReq</param>
+        	</result>
+		</action>
+		<action name="setComputationReq" class="com.geni.actions.ComputationRequirement"
+			method="setComputationReq">
+			<result name="input">/computation.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getSoftwareReq</param>
+        	</result>
+		</action>
+		<action name="setSoftwareReq" class="com.geni.actions.SoftwareRequirement"
+			method="setSoftwareReq">
+			<result name="input">/software.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getReqReview</param>
+        	</result>
+		</action>
+		<!-- <action name="getCTXML" class="com.geni.actions.CustomTemplate"
+			method="getCTXML">
+			<result name="input"></result>
+			<result name="success">/xmlOutput.jsp</result>
+		</action> -->
+
+	</package>
+
+</struts>

@@ -6,10 +6,22 @@
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.custom.i18n.resources" value="global" />
 
+	<include file="userRequirements.xml"></include>
+	<include file="login.xml"></include>
+	<include file="redirect.xml"></include>
+
 	<package name="default" extends="struts-default">
 	
-		<action name="myAWS">
-			<result>/index.jsp</result>
+		<action name="generateARI" class="com.geni.actions.CreateARI"
+			method="generateARI">
+			<result name="error">/error.jsp</result>
+			<result name="success">/final.jsp</result>
+		</action>
+
+		<action name="pythonScript" class="com.geni.actions.ProcessBuilderDemo"
+			method="pythonScript">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
     
 	</package>
