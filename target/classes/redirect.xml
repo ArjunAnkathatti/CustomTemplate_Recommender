@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="redirect" extends="struts-default">
+		<action name="getGeneralReq" class="com.geni.actions.GeneralRequirement" method="display">
+			<result name="none">/general.jsp</result>
+		</action>
+		<action name="getNetworkReq" class="com.geni.actions.NetworkRequirement" method="display">
+			<result name="none">/network.jsp</result>
+		</action>
+		<action name="getStorageReq" class="com.geni.actions.StorageRequirement" method="display">
+			<result name="none">/storage.jsp</result>
+		</action>
+		<action name="getComputationReq" class="com.geni.actions.ComputationRequirement" method="display">
+			<result name="none">/computation.jsp</result>
+		</action>
+		<action name="getSoftwareReq" class="com.geni.actions.SoftwareRequirement" method="display">
+			<result name="none">/software.jsp</result>
+		</action>
+		<action name="getReqReview">
+			<result>/review.jsp</result>
+		</action>
+	</package>
+</struts>
