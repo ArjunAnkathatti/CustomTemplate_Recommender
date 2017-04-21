@@ -28,6 +28,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-fileupload-1.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-io-2.2.jar"/>
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-lang3-3.2.jar"/>
@@ -38,5 +39,7 @@
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/ognl-3.0.6.jar"/>
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/struts2-core-2.3.20.jar"/>
 	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/xwork-core-2.3.20.jar"/>
+=======
+>>>>>>> master
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

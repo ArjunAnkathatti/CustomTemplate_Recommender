@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.bson.types.ObjectId;
+//import org.bson.types.ObjectId;
 
 import com.geni.beans.ApplicationReqIdentifier;
 import com.geni.beans.ComputationARI;
 import com.geni.beans.GeneralARI;
 import com.geni.beans.NetworkARI;
 import com.geni.beans.StorageARI;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
+//import com.mongodb.DB;
+//import com.mongodb.DBCollection;
+//import com.mongodb.DBObject;
+//import com.mongodb.util.JSON;
 
-import com.geni.utility.MongoDB;
+//import com.geni.utility.MongoDB;
 import com.geni.utility.MysqlJdbc;
 
 public class ARI_Dao {
@@ -144,7 +144,7 @@ public class ARI_Dao {
 		return ari_id;
 	}
 
-	public String insertARIIntoMango(ApplicationReqIdentifier ari) {
+/*	public String insertARIIntoMango(ApplicationReqIdentifier ari) {
 		String ariJson = "{ " + "'userId': '" + ari.getUserId() + "'," + "'appId': '" + ari.getUserId() + "',"
 				+ "'services' : " + "{general : { " + "precondition: 'AppName'," + "feature: '"
 				+ ari.getGeneralARI().getAppName() + "'}" +
@@ -158,5 +158,5 @@ public class ARI_Dao {
 		System.out.println("inside ARI_Dao class; arid id = " + id.toString());
 		return id.toString();
 
-	}
+	}*/
 }
