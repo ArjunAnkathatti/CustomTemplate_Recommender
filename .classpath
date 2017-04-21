@@ -28,19 +28,15 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/commons-fileupload-1.3.1.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/commons-io-2.2.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/commons-lang3-3.2.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/commons-logging-1.1.3.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/freemarker-2.3.19.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/javassist-3.11.0.GA.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/mysql-connector-java-5.1.35-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/ognl-3.0.6.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/struts2-core-2.3.20.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/struts/xwork-core-2.3.20.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/mongo-java-driver-3.4.0-rc1.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/mongodb-driver-3.0.0-sources.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/mongodb-driver-3.0.0.jar"/>
-	<classpathentry kind="lib" path="/Users/arjun_ac/Downloads/mongodb-driver-core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-lang3-3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/freemarker-2.3.19.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/javassist-3.11.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/mysql-connector-java-5.1.35-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/ognl-3.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/struts2-core-2.3.20.jar"/>
+	<classpathentry kind="lib" path="C:/Java Workspace/JAR Files-20170420T234018Z-001/JAR Files/xwork-core-2.3.20.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
