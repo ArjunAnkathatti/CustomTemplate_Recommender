@@ -51,11 +51,11 @@ html, body {
 					<span class="menu"></span>
 					<div class="top-menu">
 						<ul>
-							<li><a href="/Custom Template/index.html">Home</a></li>
-							<li><a href="/Custom Template/404.html">Products</a></li>
-							<li><a href="/Custom Template/about.hmtl">About Us</a></li>
-							<li><a href="/Custom Template/services.html">Services</a></li>
-							<li><a href="/Custom Template/login.jsp">Account</a></li>
+							<li><a href="/CustomTemplateDocker/index.html">Home</a></li>
+							<li><a href="/CustomTemplateDocker/404.html">Products</a></li>
+							<li><a href="/CustomTemplateDocker/about.hmtl">About Us</a></li>
+							<li><a href="/CustomTemplateDocker/services.html">Services</a></li>
+							<li><a href="/CustomTemplateDocker/login.jsp">Account</a></li>
 							<li><a class="active" href="#">ApplicationInfo</a></li>
 						</ul>
 					</div>
@@ -77,13 +77,13 @@ html, body {
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li><a href="/Custom Template/Account/Instances/index.jsp">Running
+					<li><a href="/CustomTemplateDocker/Account/Instances/index.jsp">Running
 							Instances </a></li>
-					<li><a href="/Custom Template/Account/Monitoring/index.jsp">Monitoring</a></li>
+					<li><a href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
 					<li class="sidebar-brand"><a
-						href="/Custom Template/Account/AutoScaling/index.jsp">Auto
+						href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
 							Scaling</a></li>
-					<li><a href="/Custom Template/Account/Recommendation/index.jsp">Recommendations</a></li>
+					<li><a href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
 				</ul>
 			</div>
 			<!-- /#sidebar-wrapper -->
@@ -97,9 +97,31 @@ html, body {
 								<div class="panel panel-primary">
 									<div class="panel-heading">Scaling Rules</div>
 									<div class="panel-body">
-										<button class="btn btn-primary">
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 											<span class="glyphicon glyphicon-plus"></span> Add
 										</button>
+										<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Scaling Rule</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- modal ends here -->
 										<div class="table-responsive">
 											<table class="table table-bordered">
 												<tr>

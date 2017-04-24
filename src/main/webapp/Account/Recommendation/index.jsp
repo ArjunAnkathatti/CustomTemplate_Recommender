@@ -51,11 +51,11 @@ html, body {
 					<span class="menu"></span>
 					<div class="top-menu">
 						<ul>
-							<li><a href="/Custom Template/index.html">Home</a></li>
-							<li><a href="/Custom Template/404.html">Products</a></li>
-							<li><a href="/Custom Template/about.hmtl">About Us</a></li>
-							<li><a href="/Custom Template/services.html">Services</a></li>
-							<li><a href="/Custom Template/login.jsp">Account</a></li>
+							<li><a href="/CustomTemplateDocker/index.html">Home</a></li>
+							<li><a href="/CustomTemplateDocker/404.html">Products</a></li>
+							<li><a href="/CustomTemplateDocker/about.hmtl">About Us</a></li>
+							<li><a href="/CustomTemplateDocker/services.html">Services</a></li>
+							<li><a href="/CustomTemplateDocker/login.jsp">Account</a></li>
 							<li><a class="active" href="#">ApplicationInfo</a></li>
 						</ul>
 					</div>
@@ -77,13 +77,13 @@ html, body {
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li><a href="/Custom Template/Account/Instances/index.jsp">Running
+					<li><a href="/CustomTemplateDocker/Account/Instances/index.jsp">Running
 							Instances </a></li>
-					<li><a href="/Custom Template/Account/Monitoring/index.jsp">Monitoring</a></li>
-					<li><a href="/Custom Template/Account/AutoScaling/index.jsp">Auto
+					<li><a href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
+					<li><a href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
 							Scaling</a></li>
 					<li class="sidebar-brand"><a
-						href="/Custom Template/Account/Recommendation/index.jsp">Recommendations</a></li>
+						href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
 				</ul>
 			</div>
 			<!-- /#sidebar-wrapper -->

@@ -9,6 +9,7 @@
 	<include file="userRequirements.xml"></include>
 	<include file="login.xml"></include>
 	<include file="redirect.xml"></include>
+	<include file="awsActions.xml"></include>
 
 	<package name="default" extends="struts-default">
 	

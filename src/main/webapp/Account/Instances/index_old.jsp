@@ -30,6 +30,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="../../css/style.css" rel="stylesheet" type="text/css"
 	media="all" />
+	<link href="../../css/dropdownmenu.css" rel="stylesheet" type="text/css"
+	media="all" />
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -42,6 +44,26 @@ html, body {
 	height: 100%
 }
 </style>
+<script type="text/javascript">
+	function loadInstanceDetails() {
+		alert("clicked");
+		var xhttp;
+		  if (window.XMLHttpRequest) {
+			    // code for modern browsers
+			    xhttp = new XMLHttpRequest();
+			    } else {
+			    // code for IE6, IE5
+			    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+		alert("request created");
+		  xhttp.open("GET", "http://localhost:8080/CustomTemplateDocker/Account/Instances/demo.txt" , false);
+		  alert("request opened");
+		  xhttp.send();
+		  var alert("request sent");
+		  document.getElementByID("demoDemo").innerHTML = xhttp.responseText;
+		  alert("function done");
+	}
+</script>
 </head>
 
 <body>
@@ -104,6 +126,8 @@ html, body {
 								<div class="panel panel-primary">
 									<div class="panel-heading">Running Instances</div>
 									<div class="panel-body">
+									<button name="click"  onclick="loadInstanceDetails()" >ClickHere</button>
+									<div id="demoDemo"></div>
 										<div class="table-responsive" style="min-height: 200px;">
 											<table class="table table-bordered">
 												<tr>
