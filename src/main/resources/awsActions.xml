@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="awsActions" extends="struts-default">
+	
+		<action name="stopEC2Instance" class="com.geni.actions.AWSActions"
+			method="stopEC2Instance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="failure">/Account/Instances/index.jsp</result>
+		</action>
+
+		<action name="startEC2Instance" class="com.geni.actions.AWSActions"
+			method="startEC2Instance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="failure">/Account/Instances/index.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
