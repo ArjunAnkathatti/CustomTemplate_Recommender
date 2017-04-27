@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +17,12 @@
 
 
 <!-- Custom CSS -->
-<link href="../../css/sidebar.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/sidebar.css" rel="stylesheet">
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="../../css/style.css" rel="stylesheet" type="text/css"
-	media="all" />
+	<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" />
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -44,7 +44,7 @@ html, body {
 			<div class="container">
 				<div class="logo">
 					<a href="index.jsp"><img width="110px" height="63px"
-						src="../../images/logo.png" class="img-responsive" alt="" /></a>
+						src="<%=request.getContextPath()%>/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="header-right">
 					<h4></h4>
@@ -97,11 +97,12 @@ html, body {
 								<div class="panel panel-primary">
 									<div class="panel-heading">Scaling Rules</div>
 									<div class="panel-body">
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addScalingRule">
 											<span class="glyphicon glyphicon-plus"></span> Add
 										</button>
+										<a class="btn btn-success" href="/CustomTemplateDocker/launchNewEC2Instance.action" >Launch VM</a>
 										<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="addScalingRule" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -111,11 +112,52 @@ html, body {
         <h4 class="modal-title">New Scaling Rule</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="form-horizontal" >
+        <s:form action="setScalingReq" method="post" namespace="/" >
+        	<div class="form-group">
+        		<lable for="policyName" class="control-lable col-sm-4">Rule Name</lable>
+        		<div class="col-sm-8">
+        			<s:textfield class="form-control" name="policyName" key="policyName"></s:textfield>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<lable for="scalingAction" class="control-lable col-sm-4">Action</lable>
+        		<div class="col-sm-8">
+        			<s:select class="form-control" name="scalingAction" key="scalingAction" list="actionList"></s:select>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<lable for="scalingAdjustment" class="control-lable col-sm-4">No. of instances</lable>
+        		<div class="col-sm-8">
+        			<s:select list="noOfInstancesList" class="form-control" name="scalingAdjustment" key="scalingAdjustment"></s:select>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<lable for="metricType" class="control-lable col-sm-4">Metric Type</lable>
+        		<div class="col-sm-8">
+        			<s:select list="metricTypeList" class="form-control" name="metricType" key="metricType"></s:select>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<lable for="comparisionOperator" class="control-lable col-sm-4">Condition</lable>
+        		<div class="col-sm-8">
+        			<s:select list="conditionList" class="form-control" name="comparisionOperator" key="comparisionOperator"></s:select>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<lable for="threshold" class="control-lable col-sm-4">Threshold</lable>
+        		<div class="col-sm-8">
+        			<s:textfield class="form-control" name="threshold" key="threshold"></s:textfield>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<div class="col-sm-8 col-sm-offset-4">
+        		<s:submit value="Add" class="btn btn-primary"/>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+        	</div>
+        </s:form>
+        </div>
       </div>
     </div>
 

@@ -28,5 +28,23 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/arjun_ac/.m2/repository/com/amazonaws/aws-java-sdk-autoscaling/1.11.122/aws-java-sdk-autoscaling-1.11.122.jar" sourcepath="/Users/arjun_ac/.m2/repository/com/amazonaws/aws-java-sdk-autoscaling/1.11.122/aws-java-sdk-autoscaling-1.11.122-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.amazonaws"/>
+			<attribute name="maven.artifactId" value="aws-java-sdk-autoscaling"/>
+			<attribute name="maven.version" value="1.11.122"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/arjun_ac/.m2/repository/com/amazonaws/aws-java-sdk-autoscaling/1.11.119/aws-java-sdk-autoscaling-1.11.119.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.amazonaws"/>
+			<attribute name="maven.artifactId" value="aws-java-sdk-autoscaling"/>
+			<attribute name="maven.version" value="1.11.119"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

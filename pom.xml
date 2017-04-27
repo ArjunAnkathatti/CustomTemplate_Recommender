@@ -74,6 +74,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-ec2</artifactId>
+      <version>1.11.122</version>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
@@ -101,7 +102,7 @@
       <dependency>
         <groupId>com.amazonaws</groupId>
         <artifactId>aws-java-sdk-bom</artifactId>
-        <version>1.11.104</version>
+        <version>1.11.122</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

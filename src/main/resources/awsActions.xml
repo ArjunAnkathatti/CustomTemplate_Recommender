@@ -7,6 +7,23 @@
 
 	<package name="awsActions" extends="struts-default">
 	
+		<action name="getScalingReq" class="com.geni.actions.ScalingRequirements" method="display">
+			<result name="none">/Account/AutoScaling/index.jsp</result>
+		</action> 
+		
+		<action name="setScalingReq" class="com.geni.actions.ScalingRequirements"
+			method="setScalingReq">
+			<result name="input">/Account/AutoScaling/index.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">getScalingReq</param>
+        	</result>
+		</action>
+	
+		<action name="launchNewEC2Instance" class="com.geni.actions.AWSActions" method="launchNewEC2Instance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="failure">/Account/Instances/index.jsp</result>
+		</action>
+	
 		<action name="stopEC2Instance" class="com.geni.actions.AWSActions"
 			method="stopEC2Instance">
 			<result name="success">/Account/Instances/index.jsp</result>
@@ -15,6 +32,18 @@
 
 		<action name="startEC2Instance" class="com.geni.actions.AWSActions"
 			method="startEC2Instance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="failure">/Account/Instances/index.jsp</result>
+		</action>
+		
+		<action name="terminateEC2Instance" class="com.geni.actions.AWSActions"
+			method="terminateEC2Instance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="failure">/Account/Instances/index.jsp</result>
+		</action>
+		
+		<action name="shutDownEC2Instance" class="com.geni.actions.AWSActions"
+			method="shutDownEC2Instance">
 			<result name="success">/Account/Instances/index.jsp</result>
 			<result name="failure">/Account/Instances/index.jsp</result>
 		</action>

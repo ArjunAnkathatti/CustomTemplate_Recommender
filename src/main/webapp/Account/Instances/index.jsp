@@ -32,10 +32,9 @@
 		ec2 = new AmazonEC2Client(credentialsProvider);
 	}
 %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -49,8 +48,8 @@
 
 
 <!-- Custom CSS -->
-<link href="../../css/sidebar.css" rel="stylesheet">
-<link href="../../css/dropdownmenu.css" rel="stylesheet" type="text/css"
+<link href="<%=request.getContextPath()%>/css/sidebar.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/css/dropdownmenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -63,8 +62,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="../../css/style.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" />
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -129,8 +127,8 @@ html, body {
 										});
 					});
 </script>
+<s:head />
 </head>
-
 <body>
 	<div id="holder">
 		<!-- header-section-starts -->
@@ -138,7 +136,7 @@ html, body {
 			<div class="container">
 				<div class="logo">
 					<a href="index.jsp"><img width="110px" height="63px"
-						src="../../images/logo.png" class="img-responsive" alt="" /></a>
+						src="<%=request.getContextPath()%>/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="header-right">
 					<h4></h4>
@@ -177,7 +175,7 @@ html, body {
 					<li><a
 						href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
 					<li><a
-						href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
+						href="/CustomTemplateDocker/getScalingReq">Auto
 							Scaling</a></li>
 					<li><a
 						href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
@@ -222,7 +220,8 @@ html, body {
 															String instanceState = instance.getState().getName();
 													String startURL = "/CustomTemplateDocker/startEC2Instance.action?instanceID=" + instanceID;
 													String stopURL = "/CustomTemplateDocker/stopEC2Instance.action?instanceID=" + instanceID;
-													String terminateURL = "/CustomTemplateDocker/" + instanceID;
+													String terminateURL = "/CustomTemplateDocker/shutDownEC2Instance.action?instanceID=" + instanceID;
+													String shutDownURL = "/CustomTemplateDocker/terminateEC2Instance.action?instanceID=" + instanceID;
 												%>
 												<tr>
 													<td>
@@ -244,7 +243,8 @@ html, body {
 															<div class="dropdown-content">
 																<a href=<%= startURL%>>Start</a> 
 																<a href=<%= stopURL %>>Stop</a> 
-																<a href="#">Terminate</a>
+																<a href=<%= shutDownURL%>>Shutdown</a>
+																<a href=<%= terminateURL%>>Terminate</a>
 															</div>
 														</div>
 													</td>

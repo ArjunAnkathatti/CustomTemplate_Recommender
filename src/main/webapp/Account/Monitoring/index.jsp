@@ -88,7 +88,7 @@ html, body {
 							Instances </a></li>
 					<li class="sidebar-brand"><a
 						href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
-					<li><a href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
+					<li><a href="/CustomTemplateDocker/getScalingReq">Auto
 							Scaling</a></li>
 					<li><a href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
 				</ul>

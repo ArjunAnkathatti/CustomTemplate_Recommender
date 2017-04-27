@@ -80,7 +80,7 @@ html, body {
 					<li><a href="/CustomTemplateDocker/Account/Instances/index.jsp">Running
 							Instances </a></li>
 					<li><a href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
-					<li><a href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
+					<li><a href="/CustomTemplateDocker/getScalingReq">Auto
 							Scaling</a></li>
 					<li class="sidebar-brand"><a
 						href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
@@ -95,6 +95,7 @@ html, body {
 						<div class="col-md-12">
 							<button class="btn btn-primary">Check for alternatives</button>
 							<button class="btn btn-primary">Compare</button>
+							<button class="btn btn-success">Migrate</button>
 							<div style="margin-top:10px"></div>
 							<div id="" class="panel-group">
 								<div class="panel panel-primary">
@@ -110,17 +111,17 @@ html, body {
 												<tr>
 												<td>01</td>
 												<td><img src="https://s3.amazonaws.com/web-bucket-aacwb/rec_01.jpg" style="width:500px; height:60px"/></td>
-												<td><input type="checkbox" name=""/> Add to Compare</td>
+												<td><input type="checkbox" name=""/></td>
 												</tr>
 												<tr>
 												<td>02</td>
 												<td><img src="https://s3.amazonaws.com/web-bucket-aacwb/rec_02.jpg" style="width:500px; height:60px"/></td>
-												<td><input type="checkbox" name=""/> Add to Compare</td>
+												<td><input type="checkbox" name=""/></td>
 												</tr>
 												<tr>
 												<td>03</td>
 												<td><img src="https://s3.amazonaws.com/web-bucket-aacwb/rec_03.jpg" style="width:500px; height:60px"/></td>
-												<td><input type="checkbox" name=""/> Add to Compare</td>
+												<td><input type="checkbox" name=""/></td>
 												</tr>
 											</table>
 										</div>
