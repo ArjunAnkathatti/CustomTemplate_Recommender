@@ -112,7 +112,7 @@ public class AWSInstanceManager {
 	public static String launchNewEC2Instance() {
 		init();
 		String instanceType = prop.getProperty("AWS_INSTANCE_TYPE");
-		String autoScalingGroupName = "MyAutoScalingGroup1";
+		String autoScalingGroupName = prop.getProperty("AWS_AUTOSCALING_GROUP_NAME");
 		String availabilityZone = prop.getProperty("AWS_AVIALABILITY_ZONE");
 		String loadBalancer = prop.getProperty("AWS_LOADBALANCER_NAME");
 		int minSize = 1;
@@ -232,7 +232,4 @@ public class AWSInstanceManager {
 		}
 	}
 	
-	public static void main(String[] args) {
-		launchNewEC2Instance();
-	}
 }

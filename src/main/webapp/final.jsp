@@ -50,9 +50,10 @@
                         </ul>
                         <div class="pricing-footer db-bk-color-two" style="background-color:#BFBFBF;">
 
-                           <button class="btn db-button-trans-black" data-toggle="modal" data-target="#myModal">
+                           <!--  <button class="btn db-button-trans-black" data-toggle="modal" data-target="#myModal">
                               Buy Product
-                            </button>
+                            </button> -->
+                            <a href="/CustomTemplateDocker/launchNewEC2Instance.action" class="btn db-button-trans-black">Buy Product</a>
                         </div>
                     </div>
                 </div>
@@ -73,9 +74,9 @@
                             </ul>
                             <div class="pricing-footer db-bk-color-two" style="background-color:#FFC245;">
 
-                               <button class="btn db-button-trans-black" data-toggle="modal" data-target="#myModal">
-                              Buy Product
-                            </button>
+                               <!--  <button class="btn db-button-trans-black" data-toggle="modal" data-target="#myModal"> Buy Product </button>-->
+                              <a href="/CustomTemplateDocker/launchNewEC2Instance.action" class="btn db-button-trans-black">Buy Product</a>
+                            
                             </div>
                         </div>
                     </div>
@@ -101,8 +102,8 @@
                                <!--  <button class="btn db-button-trans-black" data-toggle="modal" data-target="#myModal"> -->
                                
                               <!--  <a class="btn db-button-trans-black" href="/Custom Template/pythonScript.action">Buy Product</a> -->
-                              <a class="btn db-button-trans-black" href="/Custom Template/Account/Instances/index.jsp">Buy Product</a>
-                           
+                              <!--  <a class="btn db-button-trans-black" href="/Custom Template/Account/Instances/index.jsp">Buy Product</a> -->
+                           	  <a href="/CustomTemplateDocker/launchNewEC2Instance.action" class="btn db-button-trans-black">Buy Product</a>
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.geni.beans.ScalingPolicy;
+import com.geni.services.ScalingPolicyManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.amazonaws.services.cloudwatch.model.ComparisonOperator;
 
 public class ScalingRequirements extends ActionSupport implements ModelDriven<ScalingPolicy>{
 
@@ -99,6 +101,36 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 		System.out.println("Policy Name" + this.sp.getPolicyName());
 		System.out.println("Scaling Action" + this.sp.getScalingAction());
 		System.out.println("Threshold" + this.sp.getThreshold());
+		
+		String policyName = this.sp.getPolicyName();
+		int scalingAdjustment;
+		if (this.sp.getScalingAction().toLowerCase().equals("remove")) {
+			scalingAdjustment = -1 * this.sp.getScalingAdjustment();
+		} else {
+			scalingAdjustment = this.sp.getScalingAdjustment();
+		}
+		String policyARN = ScalingPolicyManager.createScalingPolicy(policyName, scalingAdjustment);
+		
+		String alramName = policyName + "Alaram";
+		String metricName ="";
+		if (this.sp.getMetricType().toLowerCase().equals("CPU Utilization")) {
+			metricName = "CPUUtilization";
+		}
+		ComparisonOperator comparisionOperator = null;
+		if (this.sp.getComparisionOperator().equals(">")) {
+			comparisionOperator = ComparisonOperator.GreaterThanThreshold;
+		} else if (this.sp.getComparisionOperator().equals(">=")) {
+			comparisionOperator = ComparisonOperator.GreaterThanOrEqualToThreshold;
+		} else if (this.sp.getComparisionOperator().equals("<")) {
+			comparisionOperator = ComparisonOperator.LessThanThreshold;
+		} else if (this.sp.getComparisionOperator().equals("<=")) {
+			comparisionOperator = ComparisonOperator.LessThanOrEqualToThreshold;
+		}
+		double threshold = this.sp.getThreshold();
+		String alramDescription = "Alarm created form Java program";
+		
+		ScalingPolicyManager.createAlarm(alramName, metricName, comparisionOperator, alramDescription, threshold, policyARN);
+		
 		return SUCCESS;
 	}
 	

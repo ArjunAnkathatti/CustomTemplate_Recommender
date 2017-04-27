@@ -259,7 +259,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="#" class="btn btn-warning"> <span
 							class="fa fa-user-plus"></span>&nbsp;Edit
 						</a>&nbsp; <a href="/CustomTemplateDocker/generateARI.action"
-							class="btn btn-success"> <!--  <a href="/CustomTemplateDocker/pythonScript.action" class="btn btn-success"> -->
+							class="btn btn-success">  <!-- <a href="/CustomTemplateDocker/pythonScript.action" class="btn btn-success"> -->
 							<span class="fa fa-refresh"></span>&nbsp;Submit
 						</a>
 					</div>
