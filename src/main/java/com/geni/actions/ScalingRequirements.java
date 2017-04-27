@@ -110,9 +110,10 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 			scalingAdjustment = this.sp.getScalingAdjustment();
 		}
 		String policyARN = ScalingPolicyManager.createScalingPolicy(policyName, scalingAdjustment);
+		System.out.println("Scaling Policy ARN : " + policyARN);
 		
 		String alramName = policyName + "Alaram";
-		String metricName ="";
+		String metricName ="CPUUtilization";
 		if (this.sp.getMetricType().toLowerCase().equals("CPU Utilization")) {
 			metricName = "CPUUtilization";
 		}

@@ -11,6 +11,7 @@ import com.amazonaws.services.autoscaling.AmazonAutoScalingClient;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyRequest;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyResult;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
+import com.amazonaws.services.cloudwatch.AmazonCloudWatchClient;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatchClientBuilder;
 import com.amazonaws.services.cloudwatch.model.ComparisonOperator;
 import com.amazonaws.services.cloudwatch.model.PutMetricAlarmRequest;
@@ -25,6 +26,7 @@ public class ScalingPolicyManager {
 	static AmazonEC2 ec2;
 	//static AmazonElasticLoadBalancingClient  	elb; 
     static AmazonAutoScalingClient				as;
+    static AmazonCloudWatch cw;
     private static Properties prop;
 	private static InputStream input;
 	
@@ -49,6 +51,7 @@ public class ScalingPolicyManager {
 		}
 		ec2 = new AmazonEC2Client(credentials);
 		//elb = new AmazonElasticLoadBalancingClient(credentials);
+		 cw = new AmazonCloudWatchClient(credentials);
         as = new AmazonAutoScalingClient(credentials);
 	}
 	
@@ -79,9 +82,7 @@ public class ScalingPolicyManager {
 	
 	public static PutMetricAlarmResult createAlarm(String alarmName, String metricName,ComparisonOperator comparisonOperator, String alarmDescription, double threshold, String scalingPolicyARN)
 	{
-		
-	             final AmazonCloudWatch cw =
-	                 AmazonCloudWatchClientBuilder.defaultClient();
+		init();
 	 
 	             /*Dimension dimension = new Dimension()
 	                 .withName("InstanceId")
