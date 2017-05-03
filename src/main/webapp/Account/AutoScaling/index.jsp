@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.geni.beans.ScalingRule"%>
+<%@ page import="java.util.List" %>
+
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +20,14 @@
 
 
 <!-- Custom CSS -->
-<link href="<%=request.getContextPath()%>/css/sidebar.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/sidebar.css"
+	rel="stylesheet">
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" />
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -44,7 +49,8 @@ html, body {
 			<div class="container">
 				<div class="logo">
 					<a href="index.jsp"><img width="110px" height="63px"
-						src="<%=request.getContextPath()%>/images/logo.png" class="img-responsive" alt="" /></a>
+						src="<%=request.getContextPath()%>/images/logo.png"
+						class="img-responsive" alt="" /></a>
 				</div>
 				<div class="header-right">
 					<h4></h4>
@@ -77,13 +83,16 @@ html, body {
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li><a href="/CustomTemplateDocker/Account/Instances/index.jsp">Running
+					<li><a
+						href="/CustomTemplateDocker/Account/Instances/index.jsp">Running
 							Instances </a></li>
-					<li><a href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
+					<li><a
+						href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
 					<li class="sidebar-brand"><a
-						href="/CustomTemplateDocker/Account/AutoScaling/index.jsp">Auto
+						href="/CustomTemplateDocker/getScalingReq">Auto
 							Scaling</a></li>
-					<li><a href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
+					<li><a
+						href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
 				</ul>
 			</div>
 			<!-- /#sidebar-wrapper -->
@@ -97,73 +106,89 @@ html, body {
 								<div class="panel panel-primary">
 									<div class="panel-heading">Scaling Rules</div>
 									<div class="panel-body">
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addScalingRule">
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#addScalingRule">
 											<span class="glyphicon glyphicon-plus"></span> Add
 										</button>
-										<a class="btn btn-success" href="/CustomTemplateDocker/launchNewEC2Instance.action" >Launch VM</a>
+										<!--  <a class="btn btn-success" href="/CustomTemplateDocker/launchNewEC2Instance.action" >Launch VM</a> -->
 										<!-- Modal -->
-<div id="addScalingRule" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+										<div id="addScalingRule" class="modal fade" role="dialog">
+											<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Scaling Rule</h4>
-      </div>
-      <div class="modal-body">
-      <div class="form-horizontal" >
-        <s:form action="setScalingReq" method="post" namespace="/" >
-        	<div class="form-group">
-        		<lable for="policyName" class="control-lable col-sm-4">Rule Name</lable>
-        		<div class="col-sm-8">
-        			<s:textfield class="form-control" name="policyName" key="policyName"></s:textfield>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<lable for="scalingAction" class="control-lable col-sm-4">Action</lable>
-        		<div class="col-sm-8">
-        			<s:select class="form-control" name="scalingAction" key="scalingAction" list="actionList"></s:select>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<lable for="scalingAdjustment" class="control-lable col-sm-4">No. of instances</lable>
-        		<div class="col-sm-8">
-        			<s:select list="noOfInstancesList" class="form-control" name="scalingAdjustment" key="scalingAdjustment"></s:select>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<lable for="metricType" class="control-lable col-sm-4">Metric Type</lable>
-        		<div class="col-sm-8">
-        			<s:select list="metricTypeList" class="form-control" name="metricType" key="metricType"></s:select>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<lable for="comparisionOperator" class="control-lable col-sm-4">Condition</lable>
-        		<div class="col-sm-8">
-        			<s:select list="conditionList" class="form-control" name="comparisionOperator" key="comparisionOperator"></s:select>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<lable for="threshold" class="control-lable col-sm-4">Threshold</lable>
-        		<div class="col-sm-8">
-        			<s:textfield class="form-control" name="threshold" key="threshold"></s:textfield>
-        		</div>
-        	</div>
-        	<div class="form-group">
-        		<div class="col-sm-8 col-sm-offset-4">
-        		<s:submit value="Add" class="btn btn-primary"/>
-        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		</div>
-        	</div>
-        </s:form>
-        </div>
-      </div>
-    </div>
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">New Scaling Rule</h4>
+													</div>
+													<div class="modal-body">
+														<div class="form-horizontal">
+															<s:form action="setScalingReq" method="post"
+																namespace="/">
+																<div class="form-group">
+																	<lable for="policyName" class="control-lable col-sm-4">Rule
+																	Name</lable>
+																	<div class="col-sm-8">
+																		<s:textfield class="form-control" name="policyName"
+																			key="policyName"></s:textfield>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<lable for="scalingAction"
+																		class="control-lable col-sm-4">Action</lable>
+																	<div class="col-sm-8">
+																		<s:select class="form-control" name="scalingAction"
+																			key="scalingAction" list="actionList"></s:select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<lable for="scalingAdjustment"
+																		class="control-lable col-sm-4">No. of
+																	instances</lable>
+																	<div class="col-sm-8">
+																		<s:select list="noOfInstancesList"
+																			class="form-control" name="scalingAdjustment"
+																			key="scalingAdjustment"></s:select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<lable for="metricType" class="control-lable col-sm-4">Metric
+																	Type</lable>
+																	<div class="col-sm-8">
+																		<s:select list="metricTypeList" class="form-control"
+																			name="metricType" key="metricType"></s:select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<lable for="comparisionOperator"
+																		class="control-lable col-sm-4">Condition</lable>
+																	<div class="col-sm-8">
+																		<s:select list="conditionList" class="form-control"
+																			name="comparisionOperator" key="comparisionOperator"></s:select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<lable for="threshold" class="control-lable col-sm-4">Threshold</lable>
+																	<div class="col-sm-8">
+																		<s:textfield class="form-control" name="threshold"
+																			key="threshold"></s:textfield>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="col-sm-8 col-sm-offset-4">
+																		<s:submit value="Add" class="btn btn-primary" />
+																		<button type="button" class="btn btn-default"
+																			data-dismiss="modal">Close</button>
+																	</div>
+																</div>
+															</s:form>
+														</div>
+													</div>
+												</div>
 
-  </div>
-</div>
-<!-- modal ends here -->
+											</div>
+										</div>
+										<!-- modal ends here -->
 										<div class="table-responsive">
 											<table class="table table-bordered">
 												<tr>
@@ -171,32 +196,24 @@ html, body {
 													<th>Rule Name</th>
 													<th>Metric Type</th>
 													<th>Condition</th>
+													<th>Threshold</th>
 													<th>Time Period</th>
+													<th>Action</th>
+													<th>No Of Instances</th>
 												</tr>
-												<tr>
-													<td style="text-align: center;"><input type="radio"
+									<s:iterator value="scalingRulesList">
+									<tr>
+									<td style="text-align: center;"><input type="radio"
 														name="ruleRadioBtn" value="" /></td>
-													<td>Scale UP 01</td>
-													<td>CPU Usage</td>
-													<td>Greater than or equal to 50%</td>
-													<td>10 Minutes</td>
-												</tr>
-												<tr>
-													<td style="text-align: center;"><input type="radio"
-														name="ruleRadioBtn" value="" /></td>
-													<td>Scale UP 02</td>
-													<td>No of user requests</td>
-													<td>Greater than or equal to 10000</td>
-													<td>5 Minutes</td>
-												</tr>
-												<tr>
-													<td style="text-align: center;"><input type="radio"
-														name="ruleRadioBtn" value="" /></td>
-													<td>Scale Down 01</td>
-													<td>CPU Usage</td>
-													<td>Less than or equal to 30%</td>
-													<td>15 Minutes</td>
-												</tr>
+ 									<td><s:property value="ruleName"/> </td>
+									<td><s:property value="metricType"/> </td>
+									<td><s:property value="condition"/> </td>
+									<td><s:property value="threshold"/> </td>
+									<td><s:property value="period"/></td>
+									<td><s:property value="action"/> </td>
+									<td><s:property value="noOfInstances"/> </td>
+									</tr>
+									</s:iterator>
 											</table>
 										</div>
 									</div>

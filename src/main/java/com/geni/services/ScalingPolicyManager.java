@@ -1,6 +1,8 @@
 package com.geni.services;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -8,18 +10,26 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.autoscaling.AmazonAutoScalingClient;
+import com.amazonaws.services.autoscaling.model.Alarm;
+import com.amazonaws.services.autoscaling.model.AutoScalingGroup;
+import com.amazonaws.services.autoscaling.model.DescribePoliciesResult;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyRequest;
 import com.amazonaws.services.autoscaling.model.PutScalingPolicyResult;
+import com.amazonaws.services.autoscaling.model.ScalingPolicy;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatchClient;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatchClientBuilder;
 import com.amazonaws.services.cloudwatch.model.ComparisonOperator;
+import com.amazonaws.services.cloudwatch.model.DescribeAlarmsResult;
+import com.amazonaws.services.cloudwatch.model.MetricAlarm;
 import com.amazonaws.services.cloudwatch.model.PutMetricAlarmRequest;
 import com.amazonaws.services.cloudwatch.model.PutMetricAlarmResult;
 import com.amazonaws.services.cloudwatch.model.StandardUnit;
 import com.amazonaws.services.cloudwatch.model.Statistic;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.s3.model.GetBucketAccelerateConfigurationRequest;
+import com.geni.beans.ScalingRule;
 
 public class ScalingPolicyManager {
 	
@@ -53,6 +63,56 @@ public class ScalingPolicyManager {
 		//elb = new AmazonElasticLoadBalancingClient(credentials);
 		 cw = new AmazonCloudWatchClient(credentials);
         as = new AmazonAutoScalingClient(credentials);
+	}
+	
+	public static List<ScalingRule> listScalingPolicies() throws AmazonClientException {
+		init();
+		List<ScalingRule> scalingRuleList = new ArrayList<ScalingRule>();
+        DescribePoliciesResult describePoliciesResult = as.describePolicies();
+        List<ScalingPolicy> scalingpolicies = describePoliciesResult.getScalingPolicies();
+        System.out.println("You have " + scalingpolicies.size() + " Scaling Policies");
+        for(ScalingPolicy scalingpolicy : scalingpolicies) {
+              System.out.println(scalingpolicy);
+              ScalingRule sr = new ScalingRule();
+              sr.setRuleName(scalingpolicy.getPolicyName());
+              MetricAlarm alarm = getAlarmAssociatedToPolicy(scalingpolicy.getPolicyName());
+              int adjustment = scalingpolicy.getScalingAdjustment();
+              int noOfInstances = 1;
+              if (adjustment > 0) {
+            	  sr.setAction("Add");
+            	  noOfInstances *= adjustment;
+              } else {
+            	  sr.setAction("Remove");
+            	  noOfInstances = noOfInstances * -1 * adjustment;
+              }
+              sr.setNoOfInstances(noOfInstances);
+              sr.setMetricType("CPU Utilization");
+              if  (alarm != null) {
+            	  sr.setCondition(alarm.getComparisonOperator().toString());
+            	  sr.setThreshold(alarm.getThreshold());
+            	  sr.setPeriod(alarm.getPeriod());
+            	  sr.setEvaluationPeriod(alarm.getEvaluationPeriods());
+              }
+              scalingRuleList.add(sr);
+        }
+        System.out.println("\n");
+            return scalingRuleList;
+ }
+	
+	private static MetricAlarm getAlarmAssociatedToPolicy(String policyName) throws AmazonClientException {
+		DescribeAlarmsResult result = cw.describeAlarms();
+		List<MetricAlarm> alarms = result.getMetricAlarms();
+		for (MetricAlarm alarm : alarms) {
+			if (alarm.getAlarmName().startsWith(policyName)) {
+				return alarm;
+			} else {
+				continue;
+			}
+			/*System.out.println("Alarm Name: " + alarm.getAlarmName() + " Alarm Comparison: "
+					+ alarm.getComparisonOperator() + " Alarm Action: " + alarm.getAlarmActions().get(0)
+					+ " Alarm Metric: " + alarm.getMetricName() + " Alarm Threshhold " + alarm.getThreshold());*/
+		}
+		return null;
 	}
 	
     public static String createScalingPolicy(String policyName, int scalingAdjustment) throws AmazonClientException {
@@ -113,5 +173,12 @@ public class ScalingPolicyManager {
 	      
 	       return response;
 	}
+	
+/*	public static void main(String [] args) {
+		List<ScalingRule> srList = listScalingPolicies();
+		for (ScalingRule sr : srList) {
+			System.out.println(sr.getRuleName());
+		}
+	}*/
 
 }

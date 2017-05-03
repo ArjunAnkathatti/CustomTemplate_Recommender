@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.geni.beans.ScalingPolicy;
+import com.geni.beans.ScalingRule;
 import com.geni.services.ScalingPolicyManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,12 +17,21 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 	 */
 	private static final long serialVersionUID = 1L;
 	private ScalingPolicy sp = new ScalingPolicy();
+	private List<ScalingRule> scalingRulesList;
 	private List<String> noOfInstancesList;
 	private List<String> actionList;
 	private List<String> metricTypeList;
 	private List<String> conditionList;
-	
-	
+
+
+	public List<ScalingRule> getScalingRulesList() {
+		return scalingRulesList;
+	}
+
+	public void setScalingRulesList(List<ScalingRule> scalingRulesList) {
+		this.scalingRulesList = scalingRulesList;
+	}
+
 	public List<String> getNoOfInstancesList() {
 		return noOfInstancesList;
 	}
@@ -83,6 +93,8 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 		conditionList.add(">=");
 		conditionList.add("<");
 		conditionList.add("<=");
+		
+		scalingRulesList =  ScalingPolicyManager.listScalingPolicies();
 	}
 	
 
@@ -112,7 +124,7 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 		String policyARN = ScalingPolicyManager.createScalingPolicy(policyName, scalingAdjustment);
 		System.out.println("Scaling Policy ARN : " + policyARN);
 		
-		String alramName = policyName + "Alaram";
+		String alramName = policyName + "_Alaram";
 		String metricName ="CPUUtilization";
 		if (this.sp.getMetricType().toLowerCase().equals("CPU Utilization")) {
 			metricName = "CPUUtilization";
