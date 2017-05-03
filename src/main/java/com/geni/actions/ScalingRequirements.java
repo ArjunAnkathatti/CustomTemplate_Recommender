@@ -18,11 +18,21 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 	private static final long serialVersionUID = 1L;
 	private ScalingPolicy sp = new ScalingPolicy();
 	private List<ScalingRule> scalingRulesList;
+	private List<ScalingRule> scalingRulesList_x;
 	private List<String> noOfInstancesList;
 	private List<String> actionList;
 	private List<String> metricTypeList;
 	private List<String> conditionList;
 
+	
+	
+	public List<ScalingRule> getScalingRulesList_x() {
+		return scalingRulesList_x;
+	}
+
+	public void setScalingRulesList_x(List<ScalingRule> scalingRulesList_x) {
+		this.scalingRulesList_x = scalingRulesList_x;
+	}
 
 	public List<ScalingRule> getScalingRulesList() {
 		return scalingRulesList;
@@ -95,6 +105,7 @@ public class ScalingRequirements extends ActionSupport implements ModelDriven<Sc
 		conditionList.add("<=");
 		
 		scalingRulesList =  ScalingPolicyManager.listScalingPolicies();
+		scalingRulesList_x = scalingRulesList;
 	}
 	
 

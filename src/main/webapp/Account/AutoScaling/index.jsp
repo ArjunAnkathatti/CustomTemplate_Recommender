@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.geni.beans.ScalingRule"%>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.List"%>
 
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -39,7 +39,36 @@
 html, body {
 	height: 100%
 }
+
+.hidden {
+	display: none;
+}
 </style>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var currentInstanceID = $(
+						"#policyList input[type='radio']:checked").val();
+				$("#" + currentInstanceID).removeClass("hidden");
+			});
+
+	$(document).ready(
+			function() {
+				$("#policyList input[type='radio']").mouseup(
+						function() {
+							var currentInstanceID = $(
+									"#policyList input[type='radio']:checked")
+									.val();
+							$("#" + currentInstanceID).addClass("hidden");
+						}).change(
+						function() {
+							var currentInstanceID = $(
+									"#policyList input[type='radio']:checked")
+									.val();
+							$("#" + currentInstanceID).removeClass("hidden");
+						});
+			});
+</script>
 </head>
 
 <body>
@@ -89,8 +118,7 @@ html, body {
 					<li><a
 						href="/CustomTemplateDocker/Account/Monitoring/index.jsp">Monitoring</a></li>
 					<li class="sidebar-brand"><a
-						href="/CustomTemplateDocker/getScalingReq">Auto
-							Scaling</a></li>
+						href="/CustomTemplateDocker/getScalingReq">Auto Scaling</a></li>
 					<li><a
 						href="/CustomTemplateDocker/Account/Recommendation/index.jsp">Recommendations</a></li>
 				</ul>
@@ -190,7 +218,7 @@ html, body {
 										</div>
 										<!-- modal ends here -->
 										<div class="table-responsive">
-											<table class="table table-bordered">
+											<table id="policyList" class="table table-bordered">
 												<tr>
 													<th>Select</th>
 													<th>Rule Name</th>
@@ -201,19 +229,33 @@ html, body {
 													<th>Action</th>
 													<th>No Of Instances</th>
 												</tr>
-									<s:iterator value="scalingRulesList">
-									<tr>
-									<td style="text-align: center;"><input type="radio"
-														name="ruleRadioBtn" value="" /></td>
- 									<td><s:property value="ruleName"/> </td>
-									<td><s:property value="metricType"/> </td>
-									<td><s:property value="condition"/> </td>
-									<td><s:property value="threshold"/> </td>
-									<td><s:property value="period"/></td>
-									<td><s:property value="action"/> </td>
-									<td><s:property value="noOfInstances"/> </td>
-									</tr>
-									</s:iterator>
+												<% int count=0; %>
+												<s:iterator value="scalingRulesList">
+													<%count++; %>
+													<tr>
+														<td style="text-align: center;">
+															<%
+															if (count == 1) {
+														%> <input type="radio" checked="checked"
+															name="ruleRadioBtn" value=<s:property value="ruleName"/> />
+															<%
+ 																} else {
+ 															%> 
+ 															<input type="radio"
+															name="ruleRadioBtn" value=<s:property value="ruleName"/> />
+															<% 
+																}
+															%>
+														</td>
+														<td><s:property value="ruleName" /></td>
+														<td><s:property value="metricType" /></td>
+														<td><s:property value="condition" /></td>
+														<td><s:property value="threshold" /></td>
+														<td><s:property value="period" /></td>
+														<td><s:property value="action" /></td>
+														<td><s:property value="noOfInstances" /></td>
+													</tr>
+												</s:iterator>
 											</table>
 										</div>
 									</div>
@@ -225,34 +267,32 @@ html, body {
 										<button class="btn btn-primary">
 											<span class="glyphicon glyphicon-pencil"></span> Edit
 										</button>
-										<div class="table-responsive">
-											<table class="table">
-												<tr>
-													<th>Rule Name</th>
-													<td>Scale Up 01</td>
-													<th>Metric Type</th>
-													<td>CPU Usage</td>
-												</tr>
-												<tr>
-													<th>Condition</th>
-													<td>Greater than or equal to 50%</td>
-													<th>Time Period</th>
-													<td>10 Minutes</td>
-												</tr>
-												<tr>
-													<th>Action Type</th>
-													<td>Spin Up a VM</td>
-													<th>Action Parameter</th>
-													<td>1</td>
-												</tr>
-												<tr>
-													<th>Associated Instances</th>
-													<td colspan="3">My Simple Web Server<br /> SoyKB
-														Instance<br /> WheelSim Instance
-													</td>
-												</tr>
-											</table>
-										</div>
+										<s:iterator value="scalingRulesList_x">
+											<div id=<s:property value="ruleName"/> class="hidden">
+												<div class="table-responsive">
+													<table class="table">
+														<tr>
+															<th>Rule Name</th>
+															<td><s:property value="ruleName" /></td>
+															<th>Metric Type</th>
+															<td>CPU Utilizatioin</td>
+														</tr>
+														<tr>
+															<th>Condition</th>
+															<td><s:property value="condition" /></td>
+															<th>Time Period</th>
+															<td><s:property value="period" /> seconds</td>
+														</tr>
+														<tr>
+															<th>Action Type</th>
+															<td><s:property value="action" />VM</td>
+															<th>No of Instances</th>
+															<td><s:property value="noOfInstances" /></td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</s:iterator>
 									</div>
 								</div>
 							</div>
