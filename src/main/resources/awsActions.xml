@@ -18,6 +18,11 @@
             	<param name="actionName">getScalingReq</param>
         	</result>
 		</action>
+		
+		<action name="migrateToGENI" class="com.geni.actions.AWSActions" method="createGENIInstance">
+			<result name="success">/Account/Instances/index.jsp</result>
+			<result name="error">/Account/Recommendation/index.jsp</result>
+		</action>
 	
 		<action name="launchNewEC2Instance" class="com.geni.actions.AWSActions" method="launchNewEC2Instance">
 			<result name="success">/Account/Instances/index.jsp</result>

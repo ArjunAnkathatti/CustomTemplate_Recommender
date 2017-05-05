@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.geni.services.AWSInstanceManager;
+import com.geni.services.GENIInstanceManager;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AWSActions extends ActionSupport {
@@ -41,5 +42,15 @@ public class AWSActions extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String instanceID = request.getParameter("instanceID");
 		return AWSInstanceManager.shutdownEC2Instance(instanceID);
+	}
+	
+	public String createGENIInstance () {
+		GENIInstanceManager manager = new GENIInstanceManager();
+		String result = manager.createVMInGENI();
+		if (result.contains(".com")) {
+			return SUCCESS;
+		} else {
+			return ERROR;
+		}
 	}
 }

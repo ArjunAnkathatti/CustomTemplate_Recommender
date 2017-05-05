@@ -260,6 +260,17 @@ html, body {
 												<%
 													}
 												%>
+												<% String geniInstanceID = (String)session.getAttribute("geniInstanceID");
+												if (geniInstanceID != null) { %>
+												<tr>
+												<td><input type="radio" name="instanceID" value="geniInstanceID"></input></td>
+												<td>g-lmclyebt562ad</td>
+												<td>m1.large</td>
+												<td>Action</td>
+												<td>Running</td>
+												<td><%= geniInstanceID%></td>
+												<td><%= geniInstanceID%></td>
+												<% } %>
 											</table>
 										</div>
 									</div>
@@ -340,6 +351,69 @@ html, body {
 										<%
 											}
 										%>
+										<% if (geniInstanceID != null) { %>
+										<div id="geniInstanceID" class="hidden">
+											<div class="table-responsive">
+												<table class="table">
+													<tr>
+														<th colspan="4" style="background-color: #D9EDF7;">General
+															Details :</th>
+													</tr>
+													<tr>
+														<th>Cloud Vendor</th>
+														<td>GENI</td>
+														<th>Instance Type/Name</th>
+														<td>m1.large</td>
+													</tr>
+													<tr>
+														<th>Instance ID</th>
+														<td>g-lmclyebt562ad</td>
+														<th>AMI ID</th>
+														<td>Ubuntu14.0_Docker</td>
+													</tr>
+													<tr>
+														<th>Public DNS Name</th>
+														<td><%= geniInstanceID%></td>
+
+														<th>Public IP</th>
+														<td><%= geniInstanceID%></td>
+													</tr>
+													<tr>
+														<th colspan="4" style="background-color: #D9EDF7;">Hardware
+															Specs :</th>
+													</tr>
+													<tr>
+														<th>No of cores</th>
+														<td>4</td>
+														<th>Processor</th>
+														<td>Xen 2.1Ghz</td>
+													</tr>
+													<tr>
+														<th>RAM</th>
+														<td>8 GB</td>
+														<th>O S</th>
+														<td>Ubuntu</td>
+													</tr>
+													<tr>
+														<th>Local torage</th>
+														<td>26 GB</td>
+														<th>Extra Volume</th>
+														<td>40 GB</td>
+													</tr>
+													<tr>
+														<th colspan="4" style="background-color: #D9EDF7;">Software
+															Specs :</th>
+													</tr>
+													<tr>
+														<th>Web Server</th>
+														<td>Apache</td>
+														<th>DB Server</th>
+														<td>MySql</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<% } %>
 									</div>
 								</div>
 							</div>
