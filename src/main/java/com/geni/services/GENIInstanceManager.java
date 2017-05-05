@@ -51,7 +51,7 @@ public class GENIInstanceManager {
 			System.out.println("Server address of the GENI instance : " + server);
 			System.out.println("Waiting for geni instance to come up");
 			
-			TimeUnit.SECONDS.sleep(200);
+			TimeUnit.SECONDS.sleep(120);
 				
 			System.out.println("wait completed, trying to install docker in geni");
 			installDockerInGENI(server);
