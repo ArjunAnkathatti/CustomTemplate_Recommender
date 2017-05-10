@@ -254,8 +254,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</s:select>
 
 
-
-
+										<div id="dynamic_database_server"></div>
+				
 										<p>
 											<s:text name="addSoftware"></s:text>
 										</p>

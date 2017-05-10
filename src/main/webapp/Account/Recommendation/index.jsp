@@ -60,10 +60,10 @@ html, body {
 			$("#migTabLink").addClass("active");
 			$("#compTabContent").addClass("hidden");
 			$("#migTabContent").removeClass("hidden");
-			$.ajax({url: "/CustomTemplateDocker/migrateToGENI.action", success: function(result){
-				alert("Migration Complete");
-		        window.location.href = "/CustomTemplateDocker/Account/Instances/index.jsp"
-		    }});
+			//$.ajax({url: "/CustomTemplateDocker/migrateToGENI.action", success: function(result){
+			//	alert("Migration Complete");
+		    //    window.location.href = "/CustomTemplateDocker/Account/Instances/index.jsp"
+		    //}});
 			$("#myCarousel").carousel("cycle");
 			
 		});
@@ -290,7 +290,7 @@ html, body {
 									<div class="panel-body">
 
 										<div id="myCarousel" class="carousel" data-ride="carousel"
-											data-wrap="false" data-interval="14000">
+											data-wrap="false" data-interval="6000">
 
 
 											<!-- Wrapper for slides -->
