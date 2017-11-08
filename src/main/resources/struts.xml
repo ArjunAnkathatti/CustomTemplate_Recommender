@@ -7,7 +7,6 @@
 	<constant name="struts.custom.i18n.resources" value="global" />
 
 	<include file="userRequirements.xml"></include>
-	<include file="ruleBasedActions.xml"></include>
 	<include file="login.xml"></include>
 	<include file="redirect.xml"></include>
 	<include file="awsActions.xml"></include>
@@ -49,7 +48,12 @@
 				<param name="actionName">addQuestion</param>
 			</result>
 		</action>
-
+		
+		<action name="addRule" class="com.geni.actions.QuestionRuleActions"
+			method="execute">
+			<result name="success">/rules/rule.jsp</result>
+		</action>
+		
 	</package>
 
 
