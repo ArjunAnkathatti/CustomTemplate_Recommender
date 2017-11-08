@@ -28,5 +28,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/arjun_ac/Desktop/dom4j-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/arjun_ac/Desktop/struts2-fullhibernatecore-plugin-2.2.2-GA.jar"/>
+	<classpathentry kind="lib" path="/Users/arjun_ac/Desktop/hibernate-core.jar/hibernate-core.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

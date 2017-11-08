@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-
-
 public class MysqlJdbc {
 	private static Properties prop;
 	private static InputStream input;
@@ -28,7 +26,7 @@ public class MysqlJdbc {
 			// DriverManager.getConnection("jdbc:mysql://localhost:3306/Demo_schema",
 			// "arjun", "arjun");
 			Connection connect = DriverManager.getConnection(url, user, psw);
-			System.out.println("mysql connectino is succesful");
+			System.out.println("Database connection succesful");
 			return connect;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -47,10 +45,21 @@ public class MysqlJdbc {
 			}
 			if (con != null) {
 				con.close();
+				System.out.println("Database connection closed");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Error occurs in closing the database!");
+			System.out.println("Error occured in closing the statement or database connection!");
+		}
+	}
+
+	public static void closeConn(Connection con) {
+		try {
+			if (con != null) {
+				con.close();
+				System.out.println("Database connection closed");
+			}
+		} catch (SQLException e) {
+			System.out.println("Error occured in closing the database connection!");
 		}
 	}
 }

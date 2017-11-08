@@ -1,0 +1,21 @@
+2017-10-22 16:25:57,126 - com.geni.utility.Delete -INFO - This is my first log4j's statement
+2017-10-22 16:44:09,769 - com.geni.dao.QuestionDao -INFO - addQuestion method success
+2017-10-22 16:45:59,637 - com.geni.dao.QuestionDao -INFO - editQuestion method success
+2017-10-22 17:06:05,187 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-10-22 17:06:05,201 - com.geni.services.QuestionService -ERROR - [Ljava.lang.StackTraceElement;@504bae78
+2017-10-22 17:06:05,201 - com.geni.services.QuestionService -ERROR - Operation not allowed after ResultSet closed
+2017-10-22 17:06:05,202 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-10-22 17:07:09,765 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-10-22 17:07:09,768 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-11-06 11:53:00,028 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-11-06 11:53:00,032 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-11-06 11:53:00,082 - com.geni.dao.QuestionDao -ERROR - Unknown column 'question_text' in 'field list'
+2017-11-06 11:53:00,082 - com.geni.dao.QuestionDao -ERROR - [Ljava.lang.StackTraceElement;@5fcfe4b2
+2017-11-06 11:53:00,092 - com.geni.services.QuestionService -ERROR - Question object is null
+2017-11-06 11:57:08,474 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-11-06 11:57:08,477 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-11-06 11:58:44,641 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-11-06 11:58:44,643 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-11-06 12:37:19,749 - com.geni.dao.QuestionDao -INFO - listQuestions method success
+2017-11-06 12:37:19,752 - com.geni.services.QuestionService -INFO - listQuestion mehtod - resultSet is not null
+2017-11-06 12:37:19,777 - com.geni.dao.QuestionDao -INFO - editQuestion method success

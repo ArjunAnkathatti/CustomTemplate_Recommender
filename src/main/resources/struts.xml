@@ -7,12 +7,13 @@
 	<constant name="struts.custom.i18n.resources" value="global" />
 
 	<include file="userRequirements.xml"></include>
+	<include file="ruleBasedActions.xml"></include>
 	<include file="login.xml"></include>
 	<include file="redirect.xml"></include>
 	<include file="awsActions.xml"></include>
 
 	<package name="default" extends="struts-default">
-	
+
 		<action name="generateARI" class="com.geni.actions.CreateARI"
 			method="generateARI">
 			<result name="error">/error.jsp</result>
@@ -24,7 +25,32 @@
 			<result name="success">/Account/Instances/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-    
+
+		<action name="addQuestion" class="com.geni.actions.QuestionActions"
+			method="displayAddQuestion">
+			<result name="none">/question/addQuestion.jsp</result>
+		</action>
+
+		<action name="insertQuestion" class="com.geni.actions.QuestionActions"
+			method="addQuestion">
+			<result name="success">/question/success.jsp</result>
+			<result name="input">/question/addQuestion.jsp</result>
+		</action>
+
+		<action name="editQuestion" class="com.geni.actions.QuestionActions"
+			method="displayEditQuestion">
+			<result name="none">/question/addQuestion.jsp</result>
+		</action>
+
+		<action name="updateQuestion" class="com.geni.actions.QuestionActions"
+			method="updateQuestion">
+			<result name="success">/question/success.jsp</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">addQuestion</param>
+			</result>
+		</action>
+
 	</package>
-	
+
+
 </struts>

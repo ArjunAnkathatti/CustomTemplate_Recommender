@@ -8,10 +8,10 @@
 	<name>archetype-web-app Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<repositories>
-	<repository>
-		<id>oss.sonatype.org</id>
-		<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-	</repository>
+		<repository>
+			<id>oss.sonatype.org</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -76,6 +76,11 @@
 			<version>2.3.19</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.easyrules</groupId>
+			<artifactId>easyrules-core</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -100,7 +105,7 @@
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.jcabi</groupId>
 			<artifactId>jcabi-ssh</artifactId>
@@ -116,6 +121,14 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.5</version>
 		</dependency>
+
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.0.5</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

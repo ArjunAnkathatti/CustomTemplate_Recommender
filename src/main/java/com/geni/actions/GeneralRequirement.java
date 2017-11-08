@@ -100,7 +100,7 @@ public class GeneralRequirement extends ActionSupport implements ModelDriven<Gen
 
 	public boolean isValid() {
 		boolean isValid = true;
-		if (StringUtils.isEmptyOrWhitespaceOnly(general.getAppName())) {
+		if (general.getAppName().isEmpty()) {
 			addFieldError("appName", getText("error.appName"));
 			isValid = false;
 		}
