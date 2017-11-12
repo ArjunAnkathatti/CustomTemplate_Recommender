@@ -25,35 +25,56 @@
 			<result name="error">/error.jsp</result>
 		</action>
 
-		<action name="addQuestion" class="com.geni.actions.QuestionActions"
-			method="displayAddQuestion">
-			<result name="none">/question/addQuestion.jsp</result>
-		</action>
-
-		<action name="insertQuestion" class="com.geni.actions.QuestionActions"
-			method="addQuestion">
-			<result name="success">/question/success.jsp</result>
+		<action name="questions" class="com.geni.actions.QuestionActions"
+			method="inputQuestions">
 			<result name="input">/question/addQuestion.jsp</result>
 		</action>
 
+		<action name="rules" class="com.geni.actions.RuleActions"
+			method="inputRules">
+			<result name="input">/rules/rule.jsp</result>
+		</action>
+
+		<action name="addQuestion" class="com.geni.actions.QuestionActions"
+			method="addQuestion">
+			<result name="success" type="redirectAction">
+				<param name="actionName">questions</param>
+				<param name="actionMessages">${actionMessages}</param>
+			</result>
+			<result name="input">/question/addQuestion.jsp</result>
+		</action>
+		
+		<action name="addRule" class="com.geni.actions.RuleActions" method="addRule">
+			<result name="success" type="redirectAction">
+				<param name="actionName">rules</param>
+				<param name="actionMessages">${actionMessages}</param>
+			</result>
+			<result name="input">/rules/rule.jsp</result>
+		</action>
+
 		<action name="editQuestion" class="com.geni.actions.QuestionActions"
-			method="displayEditQuestion">
-			<result name="none">/question/addQuestion.jsp</result>
+			method="inputEditQuestion">
+			<result name="input">/question/addQuestion.jsp</result>
 		</action>
 
 		<action name="updateQuestion" class="com.geni.actions.QuestionActions"
 			method="updateQuestion">
-			<result name="success">/question/success.jsp</result>
-			<result name="input" type="redirectAction">
-				<param name="actionName">addQuestion</param>
+			<result name="input">/question/addQuestion.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">questions</param>
+				<param name="actionMessages">${actionMessages}</param>
 			</result>
 		</action>
 		
-		<action name="addRule" class="com.geni.actions.QuestionRuleActions"
-			method="execute">
-			<result name="success">/rules/rule.jsp</result>
+		<action name="startQuestion" class="com.geni.actions.QuestionnaireActions" method="execute">
+			<result name="success">/ruleBased/requirements.jsp</result>
 		</action>
 		
+		<action name="nextQuestion" class="com.geni.actions.QuestionnaireActions" method="nextQuestion">
+			<result name="success">/ruleBased/requirements.jsp</result>
+			<result name="input">/ruleBased/reqReview.jsp</result>
+		</action>
+
 	</package>
 
 

@@ -69,7 +69,7 @@ public class QuestionDao {
 		}
 	}
 	
-	public ResultSet listQuestions() {
+	public ResultSet getAllQuestions() {
 		Connection con = MysqlJdbc.getConnection();
 		Statement stm = null;
 		ResultSet rs = null;
@@ -146,8 +146,8 @@ public class QuestionDao {
 			
 			while(rs.next()) {
 				ques = new Question();
-				ques.setQuestion_id(rs.getInt("question_id"));
-				ques.setQuestion_txt(rs.getString("question_txt"));
+				ques.setQuestionId(rs.getInt("question_id"));
+				ques.setQuestionText(rs.getString("question_txt"));
 				ques.setCategory(rs.getString("category"));
 			}
 		} catch (SQLException e) {

@@ -78,23 +78,34 @@ html, body {
 			<div class="row">
 				<div class="col-md-12">
 
-
-					<s:if test="question.question_id > 0">
+					<s:if test="hasActionMessages()">
+						<div class="alert alert-success alert-dismissable">
+							<s:actionmessage />
+						</div>
+					</s:if>
+					
+					<s:if test="hasActionErrors()">
+						<div class="alert alert-danger alert-dismissable">
+							<s:actionerror />
+						</div>
+					</s:if>
+					
+					<s:if test="question.questionId > 0">
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit Question</div>
 							<div class="panel-body">
 								<s:form action="updateQuestion" method="post" namespace="/"
 									cssClass="form-horizontal">
 
-									<s:hidden name="question_id" key="question_id"
-										value="%{question.question_id}"></s:hidden>
+									<s:hidden name="questionId" key="questionId"
+										value="%{question.questionId}"></s:hidden>
 
 									<div class="form-group">
 										<label class="control-label col-sm-2" for="email">Question
 											Text:</label>
 										<div class="col-sm-10">
-											<s:textfield name="question_txt" key="question_txt"
-												value="%{question.question_txt}" cssClass="form-control"></s:textfield>
+											<s:textfield name="questionText" key="questionText"
+												value="%{question.questionText}" cssClass="form-control"></s:textfield>
 										</div>
 									</div>
 
@@ -124,21 +135,21 @@ html, body {
 						<div class="panel panel-default">
 							<div class="panel-heading">Add Question</div>
 							<div class="panel-body">
-								<s:form action="insertQuestion" method="post" namespace="/"
+								<s:form action="addQuestion" method="post" namespace="/"
 									cssClass="form-horizontal">
 
 									<div class="form-group">
 										<label class="control-label col-sm-2" for="email">Question
 											Text:</label>
 										<div class="col-sm-10">
-											<s:textfield name="question_txt" key="question_txt"
+											<s:textfield key="questionText"
 												cssClass="form-control"></s:textfield>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-sm-2" for="email">Category:</label>
 										<div class="col-sm-10">
-											<s:select name="category" key="category" headerKey="null"
+											<s:select key="category" headerKey="null"
 												headerValue="Choose one" list="categoryList"
 												cssClass="form-control">
 											</s:select>
@@ -174,12 +185,12 @@ html, body {
 									<tr>
 										<s:url action="editQuestion.action" var="urlTag">
 											<s:param name="id">
-												<s:property value="#ques.question_id" />
+												<s:property value="#ques.questionId" />
 											</s:param>
 										</s:url>
 										<td><a href="<s:property value="#urlTag" />">Edit</a></td>
-										<td><s:property value="#ques.question_id" /></td>
-										<td><s:property value="#ques.question_txt" /></td>
+										<td><s:property value="#ques.questionId" /></td>
+										<td><s:property value="#ques.questionText" /></td>
 										<td><s:property value="#ques.category" /></td>
 									</tr>
 								</s:iterator>

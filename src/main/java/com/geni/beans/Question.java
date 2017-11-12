@@ -1,38 +1,41 @@
 package com.geni.beans;
 
-import java.util.List;
-
 public class Question {
-	private int question_id;
-	private String question_txt;
+	private int questionId;
+	private String questionText;
 	private String category;
-	private List<String> iv;
-	
-	
-	public int getQuestion_id() {
-		return question_id;
+	private String questionType;
+
+	public int getQuestionId() {
+		return questionId;
 	}
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
+
+	public void setQuestionId(int questionId) {
+		this.questionId = questionId;
 	}
-	public String getQuestion_txt() {
-		return question_txt;
+
+	public String getQuestionText() {
+		return questionText;
 	}
-	public void setQuestion_txt(String question_txt) {
-		this.question_txt = question_txt;
+
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
+
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public List<String> getIv() {
-		return iv;
+
+	public String getQuestionType() {
+		return questionType;
 	}
-	public void setIv(List<String> iv) {
-		this.iv = iv;
+
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
 	}
-	
-	
+
 }

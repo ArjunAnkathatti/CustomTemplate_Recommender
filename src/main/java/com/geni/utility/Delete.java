@@ -22,7 +22,7 @@ public class Delete {
 		List<Question> questionList = QuestionService.listQuestions();
 		if (questionList != null) {
 			for (Question ques : questionList) {
-				System.out.printf("Question_id: %d, %s, %s\n", ques.getQuestion_id(), ques.getQuestion_txt(),
+				System.out.printf("Question_id: %d, %s, %s\n", ques.getQuestionId(), ques.getQuestionText(),
 						ques.getCategory());
 			}
 		} else {
@@ -44,8 +44,8 @@ public class Delete {
 		 * System.out.println("deletion failed"); }
 		 */
 		Question ques = new Question();
-		ques.setQuestion_id(4);
-		ques.setQuestion_txt("new value");
+		ques.setQuestionId(4);
+		ques.setQuestionText("new value");
 		ques.setCategory("Network");
 		int flag = QuestionService.updateQuestion(ques);
 		System.out.println(flag);
